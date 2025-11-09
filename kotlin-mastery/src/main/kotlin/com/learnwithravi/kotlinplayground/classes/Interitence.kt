@@ -6,6 +6,13 @@ open class User(var Name: String) {
    open fun login() {
         println("Inside login method")
     }
+
+    private fun secret(){
+        println("Inside secret method")
+    }
+    protected open fun logout() {
+
+    }
 }
 
 class Student(Name: String) : User(Name){
@@ -18,6 +25,9 @@ class Student(Name: String) : User(Name){
     companion object{
        const val noOfEnrolledCourse = 10
         fun country() = "USA"
+    }
+    public override fun logout(){
+        println("Inside logout")
     }
 }
 
@@ -38,4 +48,5 @@ fun main() {
     var teacher = Teacher("Raj")
     println("The teacher name is : ${teacher.Name}")
     teacher.login()
+    student.logout()
 }

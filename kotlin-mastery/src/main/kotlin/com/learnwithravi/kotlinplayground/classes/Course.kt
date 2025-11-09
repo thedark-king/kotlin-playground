@@ -3,9 +3,15 @@ package com.learnwithravi.kotlinbasics.com.learnwithravi.kotlinplayground.classe
 data class Course(
     val id : Int,
     val name : String,
-    val author : String
+    val author : String,
+    val courseCategary: CourseCategary = CourseCategary.DEVELOPMENT
 )
-
+enum class CourseCategary {
+    DEVELOPMENT,
+    MARKETING,
+    DESIGN,
+    BUSINESS
+}
 
 fun main(){
 
@@ -25,5 +31,13 @@ fun main(){
     var course3 = course.copy(id= 3,
         author = "Raj")
     println(course3)
+
+    val facebookMarketingCourse = Course(
+        2,
+        "Zero to Mastery Facebook Marketing",
+        "RK",
+        CourseCategary.MARKETING
+    )
+    println(facebookMarketingCourse)
 }
 
