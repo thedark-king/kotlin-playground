@@ -53,15 +53,38 @@ fun main() {
 
     val list = listOf(listOf(1, 2, 3, 4, 5), listOf(6, 7, 8, 9, 10))
 
-    var listOfMapResult = list.map { outerlist -> outerlist.map { it.toDouble() } }
-    println("listOfMapResult : ${listOfMapResult}")
-
-    var listOfFlatMapResult = list.flatMap { outerlist -> outerlist.map { it.toDouble() } }
-    println("listOfFlatMapResult : ${listOfFlatMapResult}")
-    var kafkaCourses = exploreFlatMap(courseList, KAFKA)
-    println("kafkaCourses: ${kafkaCourses}")
+//    var listOfMapResult = list.map { outerlist -> outerlist.map { it.toDouble() } }
+//    println("listOfMapResult : ${listOfMapResult}")
+//
+//    var listOfFlatMapResult = list.flatMap { outerlist -> outerlist.map { it.toDouble() } }
+//    println("listOfFlatMapResult : ${listOfFlatMapResult}")
+//    var kafkaCourses = exploreFlatMap(courseList, KAFKA)
+//    println("kafkaCourses: ${kafkaCourses}")
+    exploreHashmap()
 }
 
+fun exploreHashmap(){
+    val nameAgeMutableMap = mutableMapOf("Dilip" to 1, "Scooby" to 5)
+
+    nameAgeMutableMap.forEach{
+        (k,v)->
+        println("the key is : ${k} and the value is: ${v}")
+    }
+    var value = nameAgeMutableMap.getOrElse("Dilip1", {"abc"}) //OR
+    var value1 = nameAgeMutableMap.getOrElse("Dilip1") {"abc"}
+    var upperCaseNames = nameAgeMutableMap.filterKeys {
+        it.length > 5
+    }.map { it.key.uppercase() }
+    var maxAge = nameAgeMutableMap.maxByOrNull {it.value}
+
+    println("upperCaseNames: $upperCaseNames")
+    println("maxAge: $maxAge")
+
+    println(value)
+    println(value1)
+
+
+}
 fun exploreFlatMap(courseList: MutableList<Course>, kafka : String) : List<String> {
     var kafkaCourses = courseList.flatMap { courses ->
         var courName = courses.name
