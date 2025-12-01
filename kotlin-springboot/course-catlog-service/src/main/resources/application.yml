@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: course-catlog-service
+  profiles:
+    active: prod
+message: Hello from default profile
+
+Server:
+  port: 9090
+
