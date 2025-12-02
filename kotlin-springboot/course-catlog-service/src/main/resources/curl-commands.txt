@@ -44,7 +44,7 @@ CREATE INSTRUCTOR:
 curl -i \
 -d '{"id":null, "name":"Dilip Sundarraj"}' \
 -H "Content-Type: application/json" \
--X POST http://localhost:8080/v1/instructors
+-X POST http://localhost:9090/v1/instructor
 
 
 CREATE COURSE WITH INSTRUCTOR:
@@ -52,4 +52,4 @@ CREATE COURSE WITH INSTRUCTOR:
 curl -i \
 -d '{"id":null, "name":"Build Restful APIs using Kotlin and SpringBoot", "category": "Development", "instructorId": 1}' \
 -H "Content-Type: application/json" \
--X POST http://localhost:8080/v1/courses
+-X POST http://localhost:9090/v1/courses/create
