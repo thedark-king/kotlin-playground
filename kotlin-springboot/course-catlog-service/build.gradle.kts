@@ -21,6 +21,15 @@ repositories {
 mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom("org.testcontainers:testcontainers-bom:${property("testcontainersVersion")}")
+    }
+}
+
+extra["testcontainersVersion"] = "1.16.2"
+
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -39,7 +48,13 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-webflux")
     testImplementation("io.mockk:mockk:1.10.4")
     testImplementation("com.ninja-squad:springmockk:3.0.1")
+
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:postgresql")
 }
+
+
+
 
 kotlin {
     compilerOptions {
